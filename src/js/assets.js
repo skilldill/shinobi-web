@@ -238,3 +238,51 @@ export const CLOUD = `
 <ellipse cx="90.5" cy="15" rx="16.5" ry="15" fill="#C4C4C4"/>
 </svg>
 `
+
+export const KAKASHI_RUN_RIGHT = `
+<svg width="28" height="42" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10.6838" y="25" width="8" height="11.6548" transform="rotate(21.6157 10.6838 25)" fill="#596143"/>
+<circle cx="14" cy="20" r="9" fill="#ECDAB9"/>
+<rect x="5" y="16" width="18" height="5" fill="#545D7C"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="24" width="28" height="5">
+<rect y="24" width="28" height="5" fill="#0B1ECA"/>
+</mask>
+<g mask="url(#mask0)">
+<circle cx="14" cy="20" r="9" fill="#475495"/>
+</g>
+<rect x="19" y="17" width="4" height="3" fill="#C4C4C4"/>
+<path d="M0.5 5C0.666667 6.16667 1.8 10 5 16H23L17 7L9.5 0L11 5L3.5 0L8 7.5L1 1.5L5 7.5L0.5 5Z" fill="#C4C4C4"/>
+<rect x="10.2123" y="28" width="2" height="6" transform="rotate(64.3611 10.2123 28)" fill="#C4C4C4"/>
+<rect x="4.80307" y="30.5962" width="2" height="2" transform="rotate(64.3611 4.80307 30.5962)" fill="#F7E7BF"/>
+<rect x="4.80307" y="30.5962" width="2" height="2" transform="rotate(64.3611 4.80307 30.5962)" fill="#F7E7BF"/>
+<rect x="4.80307" y="30.5962" width="2" height="2" transform="rotate(64.3611 4.80307 30.5962)" fill="#F7E7BF"/>
+<rect x="4.80307" y="30.5962" width="2" height="2" transform="rotate(64.3611 4.80307 30.5962)" fill="#F7E7BF"/>
+<rect x="7.97989" y="35.7428" width="3" height="5.1197" transform="rotate(35.5944 7.97989 35.7428)" fill="#5E6A8A"/>
+<rect x="7.0354" y="34.1054" width="8.07205" height="2" transform="rotate(23.2836 7.0354 34.1054)" fill="#5E6A8A"/>
+<rect x="11.5509" y="36.2705" width="3" height="4.8508" transform="rotate(36.1333 11.5509 36.2705)" fill="#5E6A8A"/>
+</svg>
+`
+
+export const KAKASHI_RUN_LEFT = `
+<svg width="28" height="42" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="8" height="11.6548" transform="matrix(-0.929676 0.368379 0.368379 0.929676 17.3162 25)" fill="#596143"/>
+<circle r="9" transform="matrix(-1 0 0 1 14 20)" fill="#ECDAB9"/>
+<rect width="18" height="5" transform="matrix(-1 0 0 1 23 16)" fill="#545D7C"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="24" width="28" height="5">
+<rect width="28" height="5" transform="matrix(-1 0 0 1 28 24)" fill="#0B1ECA"/>
+</mask>
+<g mask="url(#mask0)">
+<circle r="9" transform="matrix(-1 0 0 1 14 20)" fill="#475495"/>
+</g>
+<rect width="4" height="3" transform="matrix(-1 0 0 1 9 17)" fill="#C4C4C4"/>
+<path d="M27.5 5C27.3333 6.16667 26.2 10 23 16H5L11 7L18.5 0L17 5L24.5 0L20 7.5L27 1.5L23 7.5L27.5 5Z" fill="#C4C4C4"/>
+<rect width="2" height="6" transform="matrix(-0.432697 0.901539 0.901539 0.432697 17.7877 28)" fill="#C4C4C4"/>
+<rect width="2" height="2" transform="matrix(-0.432697 0.901539 0.901539 0.432697 23.1969 30.5962)" fill="#F7E7BF"/>
+<rect width="2" height="2" transform="matrix(-0.432697 0.901539 0.901539 0.432697 23.1969 30.5962)" fill="#F7E7BF"/>
+<rect width="2" height="2" transform="matrix(-0.432697 0.901539 0.901539 0.432697 23.1969 30.5962)" fill="#F7E7BF"/>
+<rect width="2" height="2" transform="matrix(-0.432697 0.901539 0.901539 0.432697 23.1969 30.5962)" fill="#F7E7BF"/>
+<rect width="3" height="5.1197" transform="matrix(-0.813158 0.582043 0.582043 0.813158 20.0201 35.7428)" fill="#5E6A8A"/>
+<rect width="8.07205" height="2" transform="matrix(-0.91856 0.395282 0.395282 0.91856 20.9646 34.1054)" fill="#5E6A8A"/>
+<rect width="3" height="4.8508" transform="matrix(-0.807648 0.589666 0.589666 0.807648 16.4491 36.2705)" fill="#5E6A8A"/>
+</svg>
+`

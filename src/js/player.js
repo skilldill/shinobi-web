@@ -1,5 +1,7 @@
 import { 
     KAKASHI,
+    KAKASHI_RUN_LEFT,
+    KAKASHI_RUN_RIGHT,
     KAKASHI_JUMP,
     KAKASHI_CHIDORY,
     KAKASHI_CLONES,
@@ -86,10 +88,12 @@ function initialPlayer() {
                     player.innerHTML = KAKASHI_JUMP;
 
                     if (isMoveUp) {
+                        player.innerHTML = KAKASHI_RUN_RIGHT;
                         leftPos += MIN_VALUES.MIN_STEP_DISTANCE * MIN_VALUES.MIN_JUMP_KOEFF;
                     }
     
                     if (isMoveDown) {
+                        player.innerHTML = KAKASHI_RUN_LEFT;
                         leftPos -= MIN_VALUES.MIN_STEP_DISTANCE * MIN_VALUES.MIN_JUMP_KOEFF;
                     }
     
@@ -113,12 +117,14 @@ function initialPlayer() {
 
             case KEY_CODES.RIGHT:
                 isMoveUp = true;
+                player.innerHTML = KAKASHI_RUN_RIGHT;
                 leftPos += MIN_VALUES.MIN_STEP_DISTANCE;
                 setPlayerPosition(leftPos, bottomPos);
                 break;
 
             case KEY_CODES.LEFT:
                 isMoveDown = true;
+                player.innerHTML = KAKASHI_RUN_LEFT;
                 leftPos -= MIN_VALUES.MIN_STEP_DISTANCE;
                 setPlayerPosition(leftPos, bottomPos);
                 break;
@@ -154,9 +160,13 @@ function initialPlayer() {
         switch(keyCode) {
             case KEY_CODES.LEFT:
                 isMoveDown = false;
+                player.innerHTML = KAKASHI;
+                break;
 
             case KEY_CODES.RIGHT:
                 isMoveUp = false;
+                player.innerHTML = KAKASHI;
+                break;
 
             case KEY_CODES.SPACE:
             case KEY_CODES.UP:
