@@ -1,2 +1,0 @@
-# shinobi-web
-game fight
