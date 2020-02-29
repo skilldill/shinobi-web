@@ -1,0 +1,18 @@
+{
+  "name": "shinobi-web",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/skilldill/shinobi-web.git",
+  "author": "Alexander Lomonosov <skilldill@yandex.ru>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
