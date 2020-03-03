@@ -1,4 +1,9 @@
 import "../style/style.scss";
-import { player, initialPlayer } from "./player";
+import { initialPlayer } from "./player";
+import { characters } from "./characters";
 
-initialPlayer();
+const {
+    kakashi
+} = characters;
+
+initialPlayer(kakashi.data, kakashi.skins);

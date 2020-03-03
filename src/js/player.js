@@ -1,22 +1,6 @@
-import { 
-    KAKASHI,
-    KAKASHI_RUN_LEFT,
-    KAKASHI_RUN_RIGHT,
-    KAKASHI_JUMP,
-    KAKASHI_CHIDORY,
-    KAKASHI_CLONES,
-    CLOUD
-} from "./assets";
-
-const player = document.getElementById("player");
+const playerHtml = document.getElementById("player");
 const scene = document.getElementById("scene");
-
 scene.focus();
-
-const INITIAL_POSITION = {
-    LEFT: 160,
-    BOTTOM: 56
-}
 
 const KEY_CODES = {
     LEFT: 37,
@@ -28,16 +12,7 @@ const KEY_CODES = {
     LETTER_C: 67
 }
 
-const MIN_VALUES = {
-    MIN_STEP_DISTANCE: 15,
-    MIN_JUMP_DISTANCE: 90,
-    MIN_JUMP_KOEFF: 4
-}
-
-function setPlayerPosition(x, y) {
-    player.style.bottom = `${y}px`;
-    player.style.left = `${x}px`;
-}
+const FLAT_HEIGHT = 56;
 
 function createClones(x, cloud) {
     if(cloud) {
@@ -65,68 +40,65 @@ function cloudeEffect(x) {
     return cloudContainer
 }
 
-function initialPlayer() {
-    player.innerHTML = KAKASHI;
-    let leftPos = INITIAL_POSITION.LEFT;
-    let bottomPos = INITIAL_POSITION.BOTTOM;
-    let isMoveUp = false;
-    let isMoveDown = false;
-    let isJump = false;
+function setPlayerPosition(player) {
+    playerHtml.style.left = `${player.position.x}px`;
+    playerHtml.style.bottom = `${player.position.y}px`;
+}
 
-    setPlayerPosition(leftPos, bottomPos);
+export function initialPlayer(player, playerForms) {
+    playerHtml.innerHTML = player.form;
+    setPlayerPosition(player);
 
     scene.addEventListener("keydown", (event) => {
         const { keyCode } = event;
 
-        // console.log(keyCode);
-
         switch(keyCode) {
             case KEY_CODES.SPACE:
             case KEY_CODES.UP:
-                if(!isJump) {
-                    isJump = true;
-                    player.innerHTML = KAKASHI_JUMP;
+                if(!player.state.isJump) {
+                    player.state.isJump = true;
+                    playerHtml.innerHTML = playerForms.JUMP;
 
-                    if (isMoveUp) {
-                        player.innerHTML = KAKASHI_RUN_RIGHT;
-                        leftPos += MIN_VALUES.MIN_STEP_DISTANCE * MIN_VALUES.MIN_JUMP_KOEFF;
+                    if (player.state.isMoveUp) {
+                        playerHtml.innerHTML = playerForms.RUN_RIGHT;
+                        player.position.x += player.minValues.MIN_STEP_DISTANCE * player.minValues.MIN_JUMP_KOEFF;
                     }
     
-                    if (isMoveDown) {
-                        player.innerHTML = KAKASHI_RUN_LEFT;
-                        leftPos -= MIN_VALUES.MIN_STEP_DISTANCE * MIN_VALUES.MIN_JUMP_KOEFF;
+                    if (player.state.isMoveDown) {
+                        playerHtml.innerHTML = playerForms.RUN_LEFT;
+                        player.position.x -= player.minValues.MIN_STEP_DISTANCE * player.minValues.MIN_JUMP_KOEFF;
                     }
     
-                    bottomPos += MIN_VALUES.MIN_JUMP_DISTANCE;
-                    setPlayerPosition(leftPos, bottomPos);
+                    player.position.y += player.minValues.MIN_JUMP_DISTANCE;
+                    setPlayerPosition(player);
                     setTimeout(() => { 
-                        if (isMoveUp) {
-                            leftPos += MIN_VALUES.MIN_STEP_DISTANCE * MIN_VALUES.MIN_JUMP_KOEFF;
+                        if (player.state.isMoveUp) {
+                            player.position.x += player.minValues.MIN_STEP_DISTANCE * player.minValues.MIN_JUMP_KOEFF;
                         }
         
-                        if (isMoveDown) {
-                            leftPos -= MIN_VALUES.MIN_STEP_DISTANCE * MIN_VALUES.MIN_JUMP_KOEFF;
+                        if (player.state.isMoveDown) {
+                            player.position.x -= player.minValues.MIN_STEP_DISTANCE * player.minValues.MIN_JUMP_KOEFF;
                         }
     
-                        bottomPos = INITIAL_POSITION.BOTTOM;
-                        setPlayerPosition(leftPos, bottomPos);
-                        player.innerHTML = KAKASHI;
+                        player.position.y = FLAT_HEIGHT;
+                        setPlayerPosition(player);
+                        playerHtml.innerHTML = playerForms.BASE;
                     }, 100)
                 }
                 break;
 
             case KEY_CODES.RIGHT:
-                isMoveUp = true;
-                player.innerHTML = KAKASHI_RUN_RIGHT;
-                leftPos += MIN_VALUES.MIN_STEP_DISTANCE;
-                setPlayerPosition(leftPos, bottomPos);
+                player.state.isMoveUp = true;
+                playerHtml.innerHTML = playerForms.RUN_RIGHT;
+                player.position.x += player.minValues.MIN_STEP_DISTANCE;
+                setPlayerPosition(player);
                 break;
 
             case KEY_CODES.LEFT:
-                isMoveDown = true;
-                player.innerHTML = KAKASHI_RUN_LEFT;
-                leftPos -= MIN_VALUES.MIN_STEP_DISTANCE;
-                setPlayerPosition(leftPos, bottomPos);
+                player.state.isMoveDown = true;
+                playerHtml.innerHTML = playerForms.RUN_LEFT;
+                player.position.x -= player.minValues.MIN_STEP_DISTANCE;
+                setPlayerPosition(player);
                 break;
 
             case KEY_CODES.DOWN:
@@ -134,20 +106,9 @@ function initialPlayer() {
                 break;
             
             case KEY_CODES.LETTER_F:
-                player.innerHTML = KAKASHI_CHIDORY;
                 break;
 
             case KEY_CODES.LETTER_C:
-                const currentPos = leftPos - 45;
-                let cloud = cloudeEffect(currentPos);
-                let clones;
-                setTimeout(() => clones = createClones(currentPos, cloud), 300);
-                setTimeout(() => cloud = cloudeEffect(currentPos), 3000);
-                setTimeout(() => {
-                    scene.removeChild(clones);
-                    scene.removeChild(cloud);
-                }, 3100)
-
                 break;
 
             default:
@@ -159,32 +120,27 @@ function initialPlayer() {
 
         switch(keyCode) {
             case KEY_CODES.LEFT:
-                isMoveDown = false;
-                player.innerHTML = KAKASHI;
+                player.state.isMoveDown = false;
+                playerHtml.innerHTML = playerForms.BASE;
                 break;
 
             case KEY_CODES.RIGHT:
-                isMoveUp = false;
-                player.innerHTML = KAKASHI;
+                player.state.isMoveUp = false;
+                playerHtml.innerHTML = playerForms.BASE;
                 break;
 
             case KEY_CODES.SPACE:
             case KEY_CODES.UP:
-                isJump = false;
-                setPlayerPosition(leftPos, INITIAL_POSITION.BOTTOM);
+                player.state.isJump = false;
+                setPlayerPosition(player);
                 break;
 
             case KEY_CODES.LETTER_F:
-                player.innerHTML = KAKASHI;
+                playerHtml.innerHTML = playerForms.BASE;
                 break;
 
             default:
                 break;
         }
     })
-}
-
-export {
-    player,
-    initialPlayer
 }
