@@ -286,3 +286,65 @@ export const KAKASHI_RUN_LEFT = `
 <rect width="3" height="4.8508" transform="matrix(-0.807648 0.589666 0.589666 0.807648 16.4491 36.2705)" fill="#5E6A8A"/>
 </svg>
 `
+
+export const KAKASHI_DO_JUTSU = `
+<svg width="28" height="42" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="28" width="8" height="10" fill="#596143"/>
+<circle cx="14" cy="20" r="9" fill="#ECDAB9"/>
+<rect x="5" y="16" width="18" height="5" fill="#545D7C"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="24" width="28" height="5">
+<rect y="24" width="28" height="5" fill="#0B1ECA"/>
+</mask>
+<g mask="url(#mask0)">
+<circle cx="14" cy="20" r="9" fill="#475495"/>
+</g>
+<rect x="10" y="17" width="8" height="3" fill="#C4C4C4"/>
+<path d="M0.5 5C0.666667 6.16667 1.8 10 5 16H23L17 7L9.5 0L11 5L3.5 0L8 7.5L1 1.5L5 7.5L0.5 5Z" fill="#C4C4C4"/>
+<rect x="20.0731" y="29" width="2" height="4.55595" transform="rotate(88.7071 20.0731 29)" fill="#C4C4C4"/>
+<rect x="15.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 15.5182 29.1028)" fill="#F7E7BF"/>
+<rect x="15.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 15.5182 29.1028)" fill="#F7E7BF"/>
+<rect x="15.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 15.5182 29.1028)" fill="#F7E7BF"/>
+<rect x="15.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 15.5182 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="4.55595" transform="matrix(-0.022564 0.999745 0.999745 0.022564 8.04517 29)" fill="#C4C4C4"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 12.5999 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 12.5999 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 12.5999 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 12.5999 29.1028)" fill="#F7E7BF"/>
+<rect x="14" y="30" width="2" height="1" transform="rotate(-90 14 30)" fill="#F7E7BF"/>
+<rect x="14" y="30" width="2" height="1" transform="rotate(-90 14 30)" fill="#F7E7BF"/>
+<rect x="14" y="30" width="2" height="1" transform="rotate(-90 14 30)" fill="#F7E7BF"/>
+<rect x="14" y="30" width="2" height="1" transform="rotate(-90 14 30)" fill="#F7E7BF"/>
+<rect x="10" y="38" width="3" height="4" fill="#5E6A8A"/>
+<rect x="10" y="36" width="8" height="2" fill="#5E6A8A"/>
+<rect x="15" y="38" width="3" height="4" fill="#5E6A8A"/>
+</svg>
+`
+
+export const KAKASHI_PREPARE_JUTSU = `
+<svg width="28" height="42" viewBox="0 0 28 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="28" width="8" height="10" fill="#596143"/>
+<circle cx="14" cy="20" r="9" fill="#ECDAB9"/>
+<rect x="5" y="16" width="18" height="5" fill="#545D7C"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="24" width="28" height="5">
+<rect y="24" width="28" height="5" fill="#0B1ECA"/>
+</mask>
+<g mask="url(#mask0)">
+<circle cx="14" cy="20" r="9" fill="#475495"/>
+</g>
+<rect x="10" y="17" width="8" height="3" fill="#C4C4C4"/>
+<path d="M0.5 5C0.666667 6.16667 1.8 10 5 16H23L17 7L9.5 0L11 5L3.5 0L8 7.5L1 1.5L5 7.5L0.5 5Z" fill="#C4C4C4"/>
+<rect x="21.0731" y="29" width="2" height="4.55595" transform="rotate(88.7071 21.0731 29)" fill="#C4C4C4"/>
+<rect x="16.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 16.5182 29.1028)" fill="#F7E7BF"/>
+<rect x="16.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 16.5182 29.1028)" fill="#F7E7BF"/>
+<rect x="16.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 16.5182 29.1028)" fill="#F7E7BF"/>
+<rect x="16.5182" y="29.1028" width="2" height="1.51865" transform="rotate(88.7071 16.5182 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="4.55595" transform="matrix(-0.022564 0.999745 0.999745 0.022564 7.04514 29)" fill="#C4C4C4"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 11.5999 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 11.5999 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 11.5999 29.1028)" fill="#F7E7BF"/>
+<rect width="2" height="1.51865" transform="matrix(-0.022564 0.999745 0.999745 0.022564 11.5999 29.1028)" fill="#F7E7BF"/>
+<rect x="10" y="38" width="3" height="4" fill="#5E6A8A"/>
+<rect x="10" y="36" width="8" height="2" fill="#5E6A8A"/>
+<rect x="15" y="38" width="3" height="4" fill="#5E6A8A"/>
+</svg>
+`

@@ -9,41 +9,60 @@ const KEY_CODES = {
     DOWN: 40,
     SPACE: 32,
     LETTER_F: 70,
-    LETTER_C: 67
+    LETTER_C: 67,
+    LETTER_J: 74
 }
 
 const FLAT_HEIGHT = 56;
 
-function createClones(x, cloud) {
-    if(cloud) {
-        scene.removeChild(cloud);
+function createClones(player) {
+    for(let i = 0; i < player.props.clonesCount; i++) {
+        const distance = player.position.x + (55 * i - 40);
+        const cloneBlock = document.createElement("div");
+
+        cloneBlock.innerHTML = player.form;
+        const { style } = cloneBlock;
+        style.position = "absolute";
+        style.bottom = `${player.position.y}px`;
+        style.left = `${distance}px`;
+
+        scene.append(cloneBlock);
+
+        setTimeout(
+            () => scene.removeChild(cloneBlock), 
+            4000 + i * 1000
+        );
     }
-
-    const cloneContainer = document.createElement('div');
-    cloneContainer.style.position = "absolute";
-    cloneContainer.style.bottom = `${INITIAL_POSITION.BOTTOM}px`;
-    cloneContainer.style.left = `${x}px`;
-    cloneContainer.innerHTML = KAKASHI_CLONES;
-    scene.append(cloneContainer);
-
-    return cloneContainer;
-}
-
-function cloudeEffect(x) {
-    const cloudContainer = document.createElement('div');
-    cloudContainer.style.position = "absolute";
-    cloudContainer.style.bottom = `${INITIAL_POSITION.BOTTOM + 5}px`;
-    cloudContainer.style.left = `${x}px`;
-    cloudContainer.innerHTML = CLOUD;
-    scene.append(cloudContainer);
-
-    return cloudContainer
 }
 
 function setPlayerPosition(player) {
     playerHtml.style.left = `${player.position.x}px`;
     playerHtml.style.bottom = `${player.position.y}px`;
 }
+
+function doJutsu(player, playerForms, jutsu) {
+    playerHtml.innerHTML = playerForms.DO_JUTSU;
+
+    setTimeout(() => {
+        playerHtml.innerHTML = playerForms.PREPARE_JUTSU;
+    }, 100);
+    setTimeout(() => {
+        playerHtml.innerHTML = playerForms.DO_JUTSU;
+    }, 200);
+    setTimeout(() => {
+        playerHtml.innerHTML = playerForms.PREPARE_JUTSU;
+    }, 300);
+    setTimeout(() => {
+        playerHtml.innerHTML = playerForms.DO_JUTSU;
+    }, 400);
+    setTimeout(() => {
+        playerHtml.innerHTML = playerForms.PREPARE_JUTSU;
+    }, 500);
+    setTimeout(() => {
+        playerHtml.innerHTML = playerForms.DO_JUTSU;
+        jutsu(player);
+    }, 600);
+} 
 
 export function initialPlayer(player, playerForms) {
     playerHtml.innerHTML = player.form;
@@ -101,14 +120,17 @@ export function initialPlayer(player, playerForms) {
                 setPlayerPosition(player);
                 break;
 
-            case KEY_CODES.DOWN:
-                // TODO: seat
+            case KEY_CODES.LETTER_J:
+                player.state.isDoJutsu = true;
+                playerHtml.innerHTML = playerForms.DO_JUTSU;
                 break;
             
             case KEY_CODES.LETTER_F:
+                playerHtml.innerHTML = playerForms.SECRET_JUTSU;
                 break;
 
             case KEY_CODES.LETTER_C:
+                player.state.isDoJutsu && doJutsu(player, playerForms, createClones);
                 break;
 
             default:
@@ -136,6 +158,11 @@ export function initialPlayer(player, playerForms) {
                 break;
 
             case KEY_CODES.LETTER_F:
+                playerHtml.innerHTML = playerForms.BASE;
+                break;
+
+            case KEY_CODES.LETTER_J:
+                player.state.isDoJutsu = false;
                 playerHtml.innerHTML = playerForms.BASE;
                 break;
 
