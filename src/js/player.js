@@ -126,7 +126,9 @@ export function initialPlayer(player, playerForms) {
                 break;
             
             case KEY_CODES.LETTER_F:
-                playerHtml.innerHTML = playerForms.SECRET_JUTSU;
+                player.state.isDoJutsu && doJutsu(player, playerForms, (player) => {
+                    playerHtml.innerHTML = playerForms.SECRET_JUTSU;
+                });
                 break;
 
             case KEY_CODES.LETTER_C:
