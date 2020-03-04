@@ -13,7 +13,7 @@ const KEY_CODES = {
     LETTER_J: 74
 }
 
-const FLAT_HEIGHT = 56;
+const FLAT_HEIGHT = 54;
 
 function createClones(player, map) {
     for(let i = 0; i < player.props.clonesCount; i++) {
@@ -62,7 +62,7 @@ function setPositionRelativeMap(player, map) {
     } else {
         player.position.y = FLAT_HEIGHT;
     }
-    
+
     setPlayerPosition(player);
 }
 

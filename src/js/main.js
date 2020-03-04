@@ -5,11 +5,12 @@ import { terrainMapGenerator, renderMap, obstacles } from "./terrain";
 
 export const scene = document.getElementById("scene");
 scene.focus();
-renderMap(obstacles, scene);
+// renderMap(obstacles, scene);
 const mapTerrain = terrainMapGenerator(obstacles);
 
 const {
-    kakashi
+    kakashi,
+    obito
 } = characters;
 
-initialPlayer(kakashi.data, kakashi.skins, mapTerrain);
+initialPlayer(obito.data, obito.skins, new Map());
