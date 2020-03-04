@@ -1,6 +1,6 @@
+import { scene, mapTerrain } from "./main";
+
 const playerHtml = document.getElementById("player");
-const scene = document.getElementById("scene");
-scene.focus();
 
 const KEY_CODES = {
     LEFT: 37,
@@ -40,6 +40,13 @@ function setPlayerPosition(player) {
     playerHtml.style.bottom = `${player.position.y}px`;
 }
 
+function setPositionRelativeMap(player, map) {
+    player.position.y = map.get(player.position.x + 15) ? 
+        map.get(player.position.x + 10) + FLAT_HEIGHT : 
+        FLAT_HEIGHT;
+    setPlayerPosition(player);
+}
+
 function doJutsu(player, playerForms, jutsu) {
     playerHtml.innerHTML = playerForms.DO_JUTSU;
 
@@ -64,9 +71,11 @@ function doJutsu(player, playerForms, jutsu) {
     }, 600);
 } 
 
-export function initialPlayer(player, playerForms) {
+export function initialPlayer(player, playerForms, map) {
     playerHtml.innerHTML = player.form;
     setPlayerPosition(player);
+
+    console.log(map);
 
     scene.addEventListener("keydown", (event) => {
         const { keyCode } = event;
@@ -98,9 +107,10 @@ export function initialPlayer(player, playerForms) {
                         if (player.state.isMoveDown) {
                             player.position.x -= player.minValues.MIN_STEP_DISTANCE * player.minValues.MIN_JUMP_KOEFF;
                         }
-    
-                        player.position.y = FLAT_HEIGHT;
-                        setPlayerPosition(player);
+
+                        console.log(map.get(player.position.x), player.position.x);
+
+                        setPositionRelativeMap(player, map);
                         playerHtml.innerHTML = playerForms.BASE;
                     }, 100)
                 }
@@ -110,14 +120,14 @@ export function initialPlayer(player, playerForms) {
                 player.state.isMoveUp = true;
                 playerHtml.innerHTML = playerForms.RUN_RIGHT;
                 player.position.x += player.minValues.MIN_STEP_DISTANCE;
-                setPlayerPosition(player);
+                setPositionRelativeMap(player, map);
                 break;
 
             case KEY_CODES.LEFT:
                 player.state.isMoveDown = true;
                 playerHtml.innerHTML = playerForms.RUN_LEFT;
                 player.position.x -= player.minValues.MIN_STEP_DISTANCE;
-                setPlayerPosition(player);
+                setPositionRelativeMap(player, map);
                 break;
 
             case KEY_CODES.LETTER_J:
@@ -156,7 +166,7 @@ export function initialPlayer(player, playerForms) {
             case KEY_CODES.SPACE:
             case KEY_CODES.UP:
                 player.state.isJump = false;
-                setPlayerPosition(player);
+                setPositionRelativeMap(player, map);
                 break;
 
             case KEY_CODES.LETTER_F:
