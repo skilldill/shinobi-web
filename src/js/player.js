@@ -15,16 +15,17 @@ const KEY_CODES = {
 
 const FLAT_HEIGHT = 56;
 
-function createClones(player) {
+function createClones(player, map) {
     for(let i = 0; i < player.props.clonesCount; i++) {
         const distance = player.position.x + (55 * i - 40);
         const cloneBlock = document.createElement("div");
+        const bottom = map.get(distance) ? map.get(distance) + FLAT_HEIGHT : player.position.y;
 
         cloneBlock.innerHTML = player.form;
         const { style } = cloneBlock;
         style.position = "absolute";
-        style.bottom = `${player.position.y}px`;
         style.left = `${distance}px`;
+        style.bottom = `${bottom}px`;
 
         scene.append(cloneBlock);
 
@@ -41,9 +42,27 @@ function setPlayerPosition(player) {
 }
 
 function setPositionRelativeMap(player, map) {
-    player.position.y = map.get(player.position.x + 15) ? 
-        map.get(player.position.x + 10) + FLAT_HEIGHT : 
-        FLAT_HEIGHT;
+    let target = 0;
+    
+    if (player.state.isMoveUp) {
+        if (player.position.y === FLAT_HEIGHT) {
+            target = 7 + player.position.x + player.minValues.MIN_STEP_DISTANCE;
+        }
+        else {
+            target = player.minValues.MIN_STEP_DISTANCE + player.position.x - 14;
+        }
+    } else {
+        target = player.position.x + player.minValues.MIN_STEP_DISTANCE;
+    }
+    
+    if (map.get(target)) {
+        if(player.position.y < FLAT_HEIGHT + map.get(target))
+            player.position.x = target;
+        player.position.y = map.get(target) + FLAT_HEIGHT;
+    } else {
+        player.position.y = FLAT_HEIGHT;
+    }
+    
     setPlayerPosition(player);
 }
 
@@ -142,7 +161,10 @@ export function initialPlayer(player, playerForms, map) {
                 break;
 
             case KEY_CODES.LETTER_C:
-                player.state.isDoJutsu && doJutsu(player, playerForms, createClones);
+                
+                player.state.isDoJutsu && doJutsu(player, playerForms, 
+                    (player) => createClones(player, map)
+                );
                 break;
 
             default:
